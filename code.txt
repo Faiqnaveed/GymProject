@@ -1,0 +1,17 @@
+<?php if(isset($_SESSION['user_role'])){ ?>
+
+                                <form action="instamojo.php" class="checkout-form pull-right" method="POST">
+                                    <?php
+                                        $product_id = '';
+                                        foreach($result as $row){
+                                            $product_id .= $row['product_id'].',';
+                                        }
+                                    ?>
+                                    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                                    <input type="hidden" name="product_total" class="total-price" value="">
+                                    <input type="hidden" name="product_qty" class="total-qty" value="1">
+                                    <input type="submit" class="btn btn-md btn-success" value="Proceed to Checkout">
+                                </form>
+                                <?php }else{ ?>
+                                    <a class="btn btn-sm btn-success pull-right" href="#"  >Proceed to Checkout</a>
+                                <?php } ?>
